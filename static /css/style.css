@@ -1,265 +1,252 @@
-```css id="u9z0kp"
-/* GLOBAL */
+/* =========================
+GLOBAL
+========================= */
 
 body {
-
-    background-color: #f4f6f9;
-
-    font-family: Arial, sans-serif;
-
-    color: #333;
+margin: 0;
+background: #f4f7fc;
+font-family: "Segoe UI", sans-serif;
+color: #2d3748;
 }
 
+/* =========================
+LAYOUT
+========================= */
 
-/* NAVBAR */
-
-.navbar {
-
-    padding: 15px 30px;
-
-    background: #111827 !important;
-
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+.wrapper {
+display: flex;
+min-height: 100vh;
 }
 
-
-.navbar-brand {
-
-    font-size: 24px;
-
-    font-weight: bold;
-
-    color: white !important;
+.sidebar {
+width: 260px;
+background: #111827;
+color: white;
+position: fixed;
+top: 0;
+left: 0;
+bottom: 0;
+overflow-y: auto;
 }
 
-
-.navbar-brand i {
-
-    margin-right: 8px;
+.sidebar-header {
+padding: 25px;
+border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 
+.sidebar-header h4 {
+margin: 0;
+font-weight: 700;
+}
 
-/* DASHBOARD CARDS */
+.sidebar-menu {
+list-style: none;
+margin: 0;
+padding: 15px 0;
+}
+
+.sidebar-menu li {
+margin: 5px 0;
+}
+
+.sidebar-menu a {
+display: block;
+padding: 14px 25px;
+color: #d1d5db;
+text-decoration: none;
+transition: all 0.3s;
+}
+
+.sidebar-menu a {
+background: #2563eb;
+color: white;
+}
+
+.sidebar-menu i {
+margin-right: 10px;
+}
+
+.main-content {
+margin-left: 260px;
+width: calc(100% - 260px);
+}
+
+.topbar {
+background: white;
+padding: 20px 30px;
+box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+}
+
+.content-area {
+padding: 25px;
+}
+
+/* =========================
+DASHBOARD CARDS
+========================= */
 
 .dashboard-card {
-
-    background: white;
-
-    border-radius: 15px;
-
-    padding: 30px;
-
-    text-align: center;
-
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-
-    transition: all 0.3s ease;
+background: white;
+border-radius: 18px;
+padding: 30px;
+text-align: center;
+box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+transition: 0.3s;
 }
 
-
-.dashboard-card:hover {
-
-    transform: translateY(-5px);
-
-    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+.dashboard-card {
+transform: translateY(-6px);
+box-shadow: 0 12px 30px rgba(0,0,0,0.12);
 }
 
+.dashboard-card h2 {
+font-size: 34px;
+font-weight: 700;
+}
 
 .dashboard-card h5 {
-
-    margin-top: 15px;
-
-    color: #555;
+color: #6b7280;
 }
 
-
-.dashboard-card h3 {
-
-    font-size: 32px;
-
-    font-weight: bold;
-
-    margin-top: 10px;
-}
-
-
-/* SECTION TITLES */
+/* =========================
+SECTION TITLES
+========================= */
 
 .section-title {
-
-    font-weight: bold;
-
-    margin-top: 35px;
-
-    margin-bottom: 15px;
-
-    color: #1f2937;
+font-weight: 700;
+color: #1f2937;
+margin-bottom: 18px;
+margin-top: 35px;
 }
 
+/* =========================
+SEARCH BOX
+========================= */
 
-/* TABLES */
+.search-bar {
+background: white;
+padding: 20px;
+border-radius: 15px;
+margin-bottom: 25px;
+box-shadow: 0 3px 12px rgba(0,0,0,0.05);
+}
+
+/* =========================
+TABLES
+========================= */
 
 .table {
-
-    background: white;
-
-    border-radius: 10px;
-
-    overflow: hidden;
-
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+background: white;
+border-radius: 15px;
+overflow: hidden;
 }
-
 
 .table thead {
-
-    background-color: #111827;
-
-    color: white;
+background: #111827;
+color: white;
 }
 
-
-.table td,
-.table th {
-
-    vertical-align: middle;
+.table-hover tbody tr {
+background: #f8fafc;
 }
 
+/* =========================
+CARDS
+========================= */
 
-/* BUTTONS */
-
-.btn {
-
-    border-radius: 8px;
-
-    font-weight: 500;
+.card {
+border: none;
+border-radius: 18px;
+box-shadow: 0 4px 15px rgba(0,0,0,0.05);
 }
 
-
-/* FORMS */
+/* =========================
+FORMS
+========================= */
 
 .form-control,
 .form-select {
-
-    border-radius: 8px;
-
-    padding: 10px;
-
-    border: 1px solid #d1d5db;
+border-radius: 10px;
+padding: 12px;
+border: 1px solid #d1d5db;
 }
 
-
-.form-control:focus,
-.form-select:focus {
-
-    border-color: #2563eb;
-
-    box-shadow: 0 0 0 0.15rem rgba(37,99,235,0.25);
+.form-control,
+.form-select {
+border-color: #2563eb;
+box-shadow: 0 0 0 .15rem rgba(37,99,235,.25);
 }
 
+/* =========================
+BUTTONS
+========================= */
 
-/* SEARCH BAR */
-
-.search-bar {
-
-    background: white;
-
-    padding: 20px;
-
-    border-radius: 12px;
-
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-
-    margin-bottom: 25px;
+.btn {
+border-radius: 10px;
+font-weight: 600;
 }
 
-
-/* CARDS */
-
-.card {
-
-    border-radius: 15px;
-}
-
-
-/* BADGES */
+/* =========================
+BADGES
+========================= */
 
 .badge {
-
-    padding: 8px 12px;
-
-    font-size: 13px;
+padding: 8px 14px;
+font-size: 12px;
 }
 
-
-/* LOGIN PAGE */
+/* =========================
+LOGIN PAGE
+========================= */
 
 .login-body {
-
-    background: linear-gradient(
-        135deg,
-        #1e3c72,
-        #2a5298
-    );
-
-    height: 100vh;
-
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
+background: linear-gradient(135deg,#2563eb,#1e40af);
+height: 100vh;
+display: flex;
+align-items: center;
+justify-content: center;
 }
-
-
-.login-container {
-
-    width: 100%;
-
-    max-width: 420px;
-
-    padding: 20px;
-}
-
 
 .login-card {
-
-    background: white;
-
-    padding: 40px;
-
-    border-radius: 20px;
-
-    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+background: white;
+padding: 40px;
+border-radius: 20px;
+width: 100%;
+max-width: 420px;
+box-shadow: 0 10px 30px rgba(0,0,0,0.25);
 }
 
+/* =========================
+RESPONSIVE
+========================= */
 
-.login-icon {
+@media (max-width: 992px) {
 
-    font-size: 60px;
-
-    color: #0d6efd;
+.sidebar {
+    width: 220px;
 }
 
+.main-content {
+    margin-left: 220px;
+    width: calc(100% - 220px);
+}
 
-/* RESPONSIVE */
+}
 
 @media (max-width: 768px) {
 
-    .navbar {
+.sidebar {
+    position: relative;
+    width: 100%;
+}
 
-        padding: 12px 15px;
-    }
+.main-content {
+    margin-left: 0;
+    width: 100%;
+}
 
-    .dashboard-card {
-
-        padding: 20px;
-    }
-
-    .section-title {
-
-        font-size: 22px;
-    }
+.content-area {
+    padding: 15px;
+}
 
 }
-```
