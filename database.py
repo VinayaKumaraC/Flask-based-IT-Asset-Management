@@ -1,16 +1,14 @@
 import sqlite3
-
 from werkzeug.security import generate_password_hash
-
 
 # DATABASE CONNECTION
 
 conn = sqlite3.connect("assets.db")
-
 cursor = conn.cursor()
 
-
+# =========================
 # USERS TABLE
+# =========================
 
 cursor.execute("""
 
@@ -20,14 +18,17 @@ CREATE TABLE IF NOT EXISTS users (
 
     username TEXT UNIQUE NOT NULL,
 
-    password TEXT NOT NULL
+    password TEXT NOT NULL,
+
+    role TEXT NOT NULL DEFAULT 'user'
 
 )
 
 """)
 
-
+# =========================
 # ASSETS TABLE
+# =========================
 
 cursor.execute("""
 
@@ -47,8 +48,9 @@ CREATE TABLE IF NOT EXISTS assets (
 
 """)
 
-
+# =========================
 # EMPLOYEES TABLE
+# =========================
 
 cursor.execute("""
 
@@ -64,8 +66,9 @@ CREATE TABLE IF NOT EXISTS employees (
 
 """)
 
-
+# =========================
 # ASSIGNMENTS TABLE
+# =========================
 
 cursor.execute("""
 
@@ -87,10 +90,11 @@ CREATE TABLE IF NOT EXISTS assignments (
 
 """)
 
+# =========================
+# DEFAULT ADMIN ACCOUNT
+# =========================
 
-# CREATE DEFAULT ADMIN USER
-
-hashed_password = generate_password_hash("admin123")
+admin_password = generate_password_hash("admin123")
 
 cursor.execute("""
 
@@ -98,34 +102,73 @@ INSERT OR IGNORE INTO users (
 
     id,
     username,
-    password
+    password,
+    role
 
 )
 
-VALUES (?, ?, ?)
+VALUES (?, ?, ?, ?)
 
 """, (
 
     1,
     "admin",
-    hashed_password
+    admin_password,
+    "admin"
 
 ))
 
+# =========================
+# DEFAULT USER ACCOUNT
+# =========================
 
+user_password = generate_password_hash("user123")
+
+cursor.execute("""
+
+INSERT OR IGNORE INTO users (
+
+    id,
+    username,
+    password,
+    role
+
+)
+
+VALUES (?, ?, ?, ?)
+
+""", (
+
+    2,
+    "user",
+    user_password,
+    "user"
+
+))
+
+# =========================
 # SAVE DATABASE
+# =========================
 
 conn.commit()
-
 conn.close()
 
+# =========================
+# SUCCESS MESSAGE
+# =========================
 
 print("===================================")
 print(" Database Created Successfully ")
 print("===================================")
 
-print("Default Login Details")
+print("Admin Login")
 print("------------------------------")
 print("Username : admin")
 print("Password : admin123")
+print("------------------------------")
+
+print("User Login")
+print("------------------------------")
+print("Username : user")
+print("Password : user123")
 print("------------------------------")
