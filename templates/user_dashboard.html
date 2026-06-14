@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Dashboard</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="container mt-5">
+
+    <h2>Welcome {{ session['user'] }}</h2>
+
+    <div class="alert alert-success">
+        Logged in as User
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+
+            <h4>My Assets</h4>
+
+            <p>
+                Assets assigned to this user will appear here.
+            </p>
+
+        </div>
+    </div>
+
+    <a href="/logout" class="btn btn-danger mt-3">
+        Logout
+    </a>
+
+</div>
+
+</body>
+</html>
