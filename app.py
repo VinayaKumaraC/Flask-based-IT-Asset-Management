@@ -57,8 +57,6 @@ def login():
         conn = get_db_connection()
         cursor = conn.cursor()
 
-        # GET USER
-
         cursor.execute(
             "SELECT * FROM users WHERE username=?",
             (username,)
@@ -68,20 +66,71 @@ def login():
 
         conn.close()
 
-        # CHECK HASHED PASSWORD
-
         if user and check_password_hash(
             user["password"],
             password
         ):
 
             session["user"] = username
+            session["role"] = user["role"]
 
-            return redirect("/")
+            if user["role"] == "admin":
+                return redirect("/")
+
+            return redirect("/user_dashboard")
 
         return "Invalid Username or Password"
 
     return render_template("login.html")
+
+# register
+
+@app.route("/register", methods=["GET", "POST"])
+def register():
+
+    if request.method == "POST":
+
+        username = request.form["username"]
+
+        password = generate_password_hash(
+            request.form["password"]
+        )
+
+        conn = get_db_connection()
+        cursor = conn.cursor()
+
+        try:
+
+            cursor.execute("""
+
+                INSERT INTO users
+                (
+                    username,
+                    password,
+                    role
+                )
+
+                VALUES (?, ?, ?)
+
+            """, (
+                username,
+                password,
+                "user"
+            ))
+
+            conn.commit()
+
+        except:
+
+            conn.close()
+
+            return "Username Already Exists"
+
+        conn.close()
+
+        return redirect("/login")
+
+    return render_template("register.html")
 
 
 # LOGOUT
@@ -194,7 +243,14 @@ def home():
         chart_data=chart_data
     )
 
+@app.route("/user_dashboard")
+def user_dashboard():
 
+    if not login_required():
+        return redirect("/login")
+
+    return render_template("user_dashboard.html")
+    
 # ADD ASSET
 
 @app.route("/add", methods=["POST"])
@@ -202,6 +258,9 @@ def add_asset():
 
     if not login_required():
         return redirect("/login")
+
+    if session.get("role") != "admin":
+        return "Access Denied"
 
     asset_name = request.form["asset_name"]
     asset_type = request.form["asset_type"]
@@ -224,6 +283,9 @@ def add_asset():
         conn.close()
 
         return "Serial Number Already Exists"
+
+
+  
 
     # INSERT ASSET
 
