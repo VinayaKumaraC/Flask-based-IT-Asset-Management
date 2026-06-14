@@ -342,6 +342,31 @@ color: #2563eb;
 
 }
 
+.login-body {
+    min-height: 100vh;
+    background: linear-gradient(
+        135deg,
+        #1e3a8a,
+        #2563eb
+    );
+    display: flex;
+    align-items: center;
+}
+
+.login-icon {
+    font-size: 60px;
+    color: #2563eb;
+}
+
+.form-control {
+    height: 50px;
+}
+
+.shadow-lg {
+    box-shadow:
+    0 20px 40px rgba(0,0,0,0.15) !important;
+}
+
 /* =========================
 FOOTER
 ========================= */
